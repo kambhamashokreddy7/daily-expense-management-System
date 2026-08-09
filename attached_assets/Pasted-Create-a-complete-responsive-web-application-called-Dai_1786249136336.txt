@@ -1,0 +1,583 @@
+Create a complete responsive web application called **“Daily Expense Management System”**.
+
+This is a **simple college project for manually managing daily expenses**. The application must start with a **completely new user account with zero data**.
+
+## IMPORTANT — NEW USER / EMPTY SYSTEM
+
+When the website is opened for the first time:
+
+* Do NOT show any sample expenses.
+* Do NOT show any sample income.
+* Do NOT show any sample transactions.
+* Do NOT show ₹30,000 income.
+* Do NOT show ₹12,450 expenses.
+* Do NOT show 24 transactions.
+* Do NOT show fake chart data.
+* Do NOT show fake category amounts.
+* Do NOT show a Total Balance card.
+* All dashboard values must initially be **₹0** or **0**.
+* Charts should show an appropriate empty state such as **“No expense data yet”**.
+* Recent Transactions should show **“No transactions yet”**.
+* Categories should initially have no spending amounts.
+* The user starts entering their own data manually.
+
+The application should use **localStorage** so that once the new user adds expenses, the information remains after refreshing the browser.
+
+---
+
+# 1. APPLICATION NAME
+
+Display:
+
+**Daily Expense**
+
+**Management System**
+
+Use a simple wallet/expense icon.
+
+---
+
+# 2. SIDEBAR
+
+Create a professional left sidebar.
+
+Navigation:
+
+🏠 Dashboard
+➕ Add Expense
+▣ View Expenses
+🏷 Categories
+📊 Reports
+ⓘ About
+
+Highlight the currently selected page.
+
+Bottom of sidebar:
+
+**© 2026 Daily Expense**
+**All rights reserved.**
+
+---
+
+# 3. DASHBOARD
+
+The first screen should be a clean dashboard.
+
+Header:
+
+**Good Morning! 👋**
+
+Below:
+
+**Here's your expense summary for today.**
+
+Do not hardcode the user's name.
+
+If the user has not entered a name, simply display:
+
+**Good Morning! 👋**
+
+If a username is later configured, display:
+
+**Good Morning, [Username]! 👋**
+
+Top-right:
+
+🔔 Notification
+
+👤 User icon
+
+**+ Add Expense**
+
+---
+
+# 4. SUMMARY CARDS
+
+Show exactly three cards.
+
+IMPORTANT:
+
+**DO NOT CREATE A TOTAL BALANCE CARD.**
+
+### Card 1
+
+**Total Income**
+
+Initial value:
+
+**₹0**
+
+Subtitle:
+
+**This Month**
+
+---
+
+### Card 2
+
+**Total Expenses**
+
+Initial value:
+
+**₹0**
+
+Subtitle:
+
+**This Month**
+
+---
+
+### Card 3
+
+**Transactions**
+
+Initial value:
+
+**0**
+
+Subtitle:
+
+**This Month**
+
+---
+
+The values must automatically update based on the user's actual data.
+
+---
+
+# 5. MONTHLY EXPENSE OVERVIEW
+
+Create a professional chart card:
+
+**Monthly Expense Overview**
+
+Dropdown:
+
+**This Month**
+
+For a new user with no expenses, do NOT display fake chart values.
+
+Instead display:
+
+**No expense data yet**
+
+and optionally:
+
+**Add your first expense to see your monthly spending.**
+
+Once the user adds expenses, automatically generate the chart from the real expense data.
+
+---
+
+# 6. EXPENSE BY CATEGORY
+
+Create:
+
+**Expense by Category**
+
+For a new user, show an empty state:
+
+**No category data yet**
+
+**Add an expense to start tracking your spending.**
+
+Do not display fake amounts or percentages.
+
+Once the user adds expenses, automatically calculate:
+
+* Food & Drinks
+* Transport
+* Shopping
+* Bills
+* Education
+* Entertainment
+* Health
+* Other
+
+The donut chart must use the user's actual expenses.
+
+---
+
+# 7. RECENT TRANSACTIONS
+
+Create:
+
+**Recent Transactions**
+
+Top-right:
+
+**View All**
+
+For a new user, do NOT display example rows.
+
+Instead display:
+
+**No transactions yet**
+
+**Your added expenses will appear here.**
+
+After the user adds an expense, show the real transaction.
+
+Transaction columns:
+
+* Date
+* Category
+* Description
+* Amount
+* Payment Method
+* Actions
+
+Actions:
+
+✏️ Edit
+
+🗑️ Delete
+
+---
+
+# 8. ADD EXPENSE
+
+The main action should be:
+
+**+ Add Expense**
+
+Open a professional form/modal.
+
+Fields:
+
+### Amount
+
+₹ ________
+
+### Category
+
+Dropdown:
+
+* Food & Drinks
+* Transport
+* Shopping
+* Bills
+* Education
+* Entertainment
+* Health
+* Other
+
+### Description
+
+Placeholder:
+
+**Enter expense description**
+
+### Date
+
+Use a date picker.
+
+Default date:
+
+**Today**
+
+### Payment Method
+
+* Cash
+* UPI
+* Card
+* Other
+
+Buttons:
+
+**Cancel**
+
+**Save Expense**
+
+After saving:
+
+1. Store the expense in localStorage.
+2. Update Total Expenses.
+3. Update Transactions count.
+4. Update monthly chart.
+5. Update category chart.
+6. Update Recent Transactions.
+7. Show a success notification.
+
+---
+
+# 9. EXPENSE DATA STRUCTURE
+
+Use a simple structure:
+
+```text
+id
+amount
+category
+description
+date
+paymentMethod
+```
+
+All expenses must belong to the current user.
+
+Do not create predefined transaction records.
+
+---
+
+# 10. VIEW EXPENSES
+
+Create a separate:
+
+**View Expenses**
+
+page.
+
+For a new user:
+
+Display:
+
+**No expenses found**
+
+**Start by adding your first expense.**
+
+After expenses are added, display all real expenses.
+
+Include:
+
+* Search
+* Category filter
+* Date filter
+* Payment method filter
+* Sort by date
+* Sort by amount
+* Edit
+* Delete
+
+---
+
+# 11. CATEGORIES
+
+Create:
+
+**Categories**
+
+Display categories:
+
+🍔 Food & Drinks
+🚌 Transport
+🛍 Shopping
+📄 Bills
+🎓 Education
+🎮 Entertainment
+❤️ Health
+••• Other
+
+For a new user, all category totals should be:
+
+**₹0**
+
+Once expenses are added, automatically calculate the category totals.
+
+---
+
+# 12. REPORTS
+
+Create a simple:
+
+**Reports**
+
+page.
+
+For a new user:
+
+Show:
+
+**No expense reports available yet.**
+
+**Add expenses to generate your report.**
+
+Once data exists, display:
+
+* Monthly expenses
+* Category expenses
+* Number of transactions
+* Monthly chart
+* Category chart
+
+All information must come from actual user-entered data.
+
+---
+
+# 13. ABOUT PAGE
+
+Create:
+
+**About Daily Expense Management System**
+
+Description:
+
+“This project is a simple web-based Daily Expense Management System designed to help users manually record, organize and monitor their daily expenses.”
+
+Features:
+
+✓ Add expenses
+✓ Edit expenses
+✓ Delete expenses
+✓ Categorize expenses
+✓ Track monthly spending
+✓ View reports
+
+Text:
+
+**Developed as a College Project**
+
+---
+
+# 14. LOCAL STORAGE
+
+Use browser localStorage.
+
+The initial localStorage state must be empty:
+
+```text
+expenses = []
+```
+
+Do not seed the application with dummy data.
+
+When the user adds an expense:
+
+```text
+expenses = [new expense]
+```
+
+When the user deletes an expense, remove it from localStorage.
+
+When the page reloads, retrieve the user's saved expenses.
+
+---
+
+# 15. EMPTY DASHBOARD
+
+The initial dashboard should look approximately like:
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ Daily Expense                         🔔  👤 User            │
+├──────────────┬──────────────────────────────────────────────┤
+│              │                                               │
+│ 🏠 Dashboard │  Good Morning! 👋                            │
+│              │  Here's your expense summary for today.      │
+│ ➕ Add Expense│                              [+ Add Expense] │
+│              │                                               │
+│ ▣ View Expenses│ ┌────────────┐ ┌────────────┐ ┌──────────┐ │
+│              │ │Total Income│ │Total Expense│ │Transactions│
+│ 🏷 Categories│ │   ₹0       │ │    ₹0       │ │     0     │
+│              │ │ This Month │ │ This Month  │ │This Month │
+│ 📊 Reports   │ └────────────┘ └────────────┘ └──────────┘ │
+│              │                                               │
+│ ⓘ About      │ ┌───────────────────┐ ┌────────────────────┐│
+│              │ │ Monthly Expense   │ │ Expense by Category││
+│              │ │                   │ │                    ││
+│              │ │ No expense data   │ │ No category data   ││
+│              │ │ yet               │ │ yet                ││
+│              │ └───────────────────┘ └────────────────────┘│
+│              │                                               │
+│              │ Recent Transactions                           │
+│              │ ┌───────────────────────────────────────────┐│
+│              │ │         No transactions yet               ││
+│              │ │   Add your first expense to get started.  ││
+│              │ └───────────────────────────────────────────┘│
+│              │                                               │
+└──────────────┴───────────────────────────────────────────────┘
+```
+
+---
+
+# 16. DESIGN
+
+Use a modern professional design:
+
+* White cards
+* Light gray background
+* Blue/purple primary color
+* Green for income
+* Red for expenses
+* Purple for transactions
+* Rounded corners
+* Subtle shadows
+* Clean typography
+* Simple icons
+* Good spacing
+* Responsive design
+
+Do not make it look like a banking application.
+
+It should look like a **clean, professional college project**.
+
+---
+
+# 17. RESPONSIVE DESIGN
+
+Desktop:
+
+Sidebar + dashboard.
+
+Tablet:
+
+Responsive sidebar and cards.
+
+Mobile:
+
+Hamburger menu.
+
+Cards stack vertically.
+
+Charts resize automatically.
+
+Transactions become mobile-friendly cards or a horizontally scrollable table.
+
+---
+
+# 18. IMPORTANT FUNCTIONAL RULE
+
+The entire application must be **data-driven**.
+
+Never hardcode dashboard numbers.
+
+For a new user:
+
+```text
+Total Income     = ₹0
+Total Expenses   = ₹0
+Transactions     = 0
+Category totals  = ₹0
+Charts           = Empty
+Transactions     = Empty
+```
+
+After the user adds expenses, everything must automatically update.
+
+The application should therefore feel like a **brand-new expense management system ready for the user to start entering their own expenses**.
+
+---
+
+# 19. FINAL REQUIREMENT
+
+Build the complete website with:
+
+* Dashboard
+* Add Expense
+* View Expenses
+* Categories
+* Reports
+* About
+* localStorage
+* Add/Edit/Delete
+* Search and filters
+* Dynamic calculations
+* Dynamic charts
+* Empty states
+* Responsive design
+
+**Do not include any sample/demo data.**
+
+**Do not include Total Balance.**
+
+**Start with a completely new user and an empty expense database.**
