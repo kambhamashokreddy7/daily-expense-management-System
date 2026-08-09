@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Daily Expense Management System"
+description = "A responsive college project for manually recording, organizing, filtering, and reporting daily expenses with a clean empty-state-first experience and browser localStorage persistence."
+version = "1.0.0"
+id = "artifacts/daily-expense"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26063
+
+[services.development]
+run = "pnpm --filter @workspace/daily-expense run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/daily-expense", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/daily-expense/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26063"
+BASE_PATH = "/"
