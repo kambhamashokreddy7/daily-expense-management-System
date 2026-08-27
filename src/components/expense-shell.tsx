@@ -12,6 +12,7 @@ import {
 import { Link, useLocation } from "wouter";
 import { useState, type ReactNode } from "react";
 import { getInitial, logout } from "../auth/auth";
+import DotField from "./DotField";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -55,7 +56,25 @@ export function ExpenseShell({
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen overflow-hidden">
+
+      {/* ========================================================= */}
+      {/* DOT FIELD BACKGROUND                                      */}
+      {/* ========================================================= */}
+
+      <div
+        className="pointer-events-none fixed inset-0"
+        style={{
+          zIndex: 10,
+        }}
+      >
+        <DotField />
+      </div>
+
+      {/* ========================================================= */}
+      {/* SIDEBAR                                                   */}
+      {/* ========================================================= */}
+
       <aside
         className={
           "fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col " +
@@ -64,6 +83,7 @@ export function ExpenseShell({
           (open ? "translate-x-0" : "-translate-x-full")
         }
       >
+        {/* Logo */}
         <div className="mb-8 flex items-start justify-between px-3">
           <div>
             <h2 className="text-lg font-bold leading-tight">
@@ -84,10 +104,12 @@ export function ExpenseShell({
           </button>
         </div>
 
+        {/* Workspace */}
         <div className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/40">
           Workspace
         </div>
 
+        {/* Navigation */}
         <nav className="flex flex-col gap-1">
           {navItems.map(({ href, label, icon: Icon }) => {
             const active =
@@ -121,6 +143,7 @@ export function ExpenseShell({
           })}
         </nav>
 
+        {/* Sidebar Footer */}
         <div className="mt-auto border-t border-sidebar-border/50 pt-5">
           <p className="text-xs leading-relaxed text-sidebar-foreground/45">
             A calmer way to track the little things.
@@ -136,6 +159,10 @@ export function ExpenseShell({
         </div>
       </aside>
 
+      {/* ========================================================= */}
+      {/* MOBILE OVERLAY                                            */}
+      {/* ========================================================= */}
+
       {open && (
         <button
           className="fixed inset-0 z-30 bg-primary/35 backdrop-blur-sm lg:hidden"
@@ -144,24 +171,40 @@ export function ExpenseShell({
         />
       )}
 
-      <div className="lg:pl-[260px]">
-        <header className="sticky top-0 z-20 flex h-[76px] items-center justify-between border-b border-border/70 bg-background/90 px-5 backdrop-blur-md sm:px-8 lg:px-12">
+      {/* ========================================================= */}
+      {/* MAIN CONTENT                                              */}
+      {/* ========================================================= */}
+
+      <div className="relative z-20 lg:pl-[260px]">
+
+        {/* ======================================================= */}
+        {/* HEADER                                                  */}
+        {/* ======================================================= */}
+
+        <header className="sticky top-0 z-20 flex h-[76px] items-center justify-between border-b border-border/70 bg-background/75 px-5 backdrop-blur-md sm:px-8 lg:px-12">
+
+          {/* Mobile Menu */}
           <button
-            className="rounded-xl border border-border bg-card p-2.5 lg:hidden"
+            className="rounded-xl border border-border bg-card/90 p-2.5 lg:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
             <Menu size={19} />
           </button>
 
+          {/* Status */}
           <div className="hidden items-center gap-2 text-xs text-muted-foreground sm:flex">
             <span className="size-2 rounded-full bg-[#6fa36b]" />
+
             Local journal · changes saved automatically
           </div>
 
+          {/* Right Header */}
           <div className="ml-auto flex items-center gap-2.5">
+
+            {/* Notification */}
             <button
-              className="relative rounded-xl border border-border bg-card p-2.5 text-muted-foreground transition hover:text-foreground"
+              className="relative rounded-xl border border-border bg-card/90 p-2.5 text-muted-foreground transition hover:text-foreground"
               aria-label="Notifications"
             >
               <Bell size={18} />
@@ -169,20 +212,28 @@ export function ExpenseShell({
               <span className="absolute right-2 top-2 size-1.5 rounded-full bg-accent" />
             </button>
 
+            {/* Profile */}
             <div className="relative">
+
               <button
-                onClick={() => setProfileOpen(!profileOpen)}
+                onClick={() =>
+                  setProfileOpen(!profileOpen)
+                }
                 className="grid size-9 place-items-center rounded-xl bg-[#e8dfc8] text-xs font-bold text-primary transition hover:opacity-80"
                 aria-label="Open profile"
               >
                 {initial}
               </button>
 
+              {/* Profile Dropdown */}
               {profileOpen && (
                 <div className="absolute right-0 top-12 z-50 w-44 rounded-xl border border-border bg-card p-2 shadow-lg">
+
                   <Link
                     href="/profile"
-                    onClick={() => setProfileOpen(false)}
+                    onClick={() =>
+                      setProfileOpen(false)
+                    }
                     className="block rounded-lg px-3 py-2 text-sm text-foreground hover:bg-muted"
                   >
                     Profile
@@ -194,17 +245,23 @@ export function ExpenseShell({
                   >
                     Logout
                   </button>
+
                 </div>
               )}
+
             </div>
           </div>
         </header>
 
+        {/* ======================================================= */}
+        {/* PAGE CONTENT                                             */}
+        {/* ======================================================= */}
+
         <main className="mx-auto max-w-[1400px] px-5 py-8 sm:px-8 sm:py-10 lg:px-12">
           {children}
         </main>
+
       </div>
     </div>
   );
 }
-
