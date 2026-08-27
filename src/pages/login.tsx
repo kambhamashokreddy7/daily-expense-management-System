@@ -8,7 +8,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth, googleProvider } from "../lib/firebase";
-import "./Login.css";
+import "./login.css";
 import Lightfall from "../components/Lightfall";
 
 export default function Login() {
