@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/public",
+  "buildCommand": "cd artifacts/daily-expense && pnpm run build",
+  "outputDirectory": "artifacts/daily-expense/dist",
   "rewrites": [
     {
       "source": "/(.*)",
